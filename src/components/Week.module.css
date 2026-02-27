@@ -1,4 +1,4 @@
 .weekContainer{
     display: grid;
-    grid-template-columns: repeat( 5, 1fr);
+    grid-template-columns: 1fr repeat( 6, 2fr);
 }
