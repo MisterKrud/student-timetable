@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import Template from './pages/Template'
+import TimetableBody from './pages/TimetableBody'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+ 
 
   return (
     <>
-      <Template />
+      <TimetableBody />
     </>
   )
 }
