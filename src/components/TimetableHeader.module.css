@@ -1,0 +1,23 @@
+.headerContainer{
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftHeader, .rightHeader{
+    border: 1px solid blue;
+ 
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.logoContainer{
+    width: min-content ;
+}
+
+.logo{
+width: 10rem;
+margin: 0;
+
+
+}

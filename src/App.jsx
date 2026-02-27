@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import TimetableBody from './pages/TimetableBody'
+import TimetabeHeader from './components/TimetableHeader'
 import './App.css'
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
 
   return (
     <>
+    <TimetabeHeader />
       <TimetableBody />
     </>
   )
