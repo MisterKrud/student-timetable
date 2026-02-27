@@ -4,6 +4,7 @@ import styles from './Dropdown.module.css'
 const dropdownList = ['',...timetableDropDowns]
 const Dropdown = ()  => {
 
+    //conditional value for lunch and morning tea
 return (
     <div className = {styles.dropdown}>
     <label htmlFor="dropdowns"> </label>   
