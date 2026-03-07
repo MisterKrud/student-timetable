@@ -1,0 +1,231 @@
+/* --- COLOR THEME LOGIC --- */
+
+/* Subject Hues */
+/* --- VERSION MODIFIERS --- */
+[data-version="group lesson"]       { --lightness: 50%; --text: white; font-weight: bold; }
+[data-version="individual lesson"]  { --lightness: 75%; --text: #222;  font-weight: bold; }
+[data-version="independent"] { --lightness: 75%; --text: #222;  font-weight: normal; }
+
+/* --- CORE SUBJECTS --- */
+[data-subject="maths"]     { --hue: 0; }    /* Red */
+[data-subject="english"]   { --hue: 205; }  /* Blue */
+[data-subject="science"]   { --hue: 120; --text: #222; }  /* Green */
+[data-subject="geography"] { --hue: 274; }  /* Olive/Earth */
+[data-subject="history"]   { --hue: 274; }   /* Orange/Brown */
+[data-subject="pdhpe"]     { --hue: 24; }  /* Pink/Red */
+
+
+[data-subject = "child-studies"] {--hue: 210; --saturation: 100%; --text: black;}
+[data-subject = "commerce"] {--hue: 240;}
+[data-subject = "elec-history"] {--hue: 319;}
+[data-subject = "food-tech"] {--hue: 100; --saturation: 100%;}
+/* --- ELECTIVES (Grouped by Type) --- */
+/* Tech & Trade */
+[data-subject="agriculture"] {--hue: 89; --text: #222; }
+[data-subject="textiles"] {--hue: 336; }
+[data-subject="timber"] {--hue: 60; } 
+[data-subject="computing-tech"] { --hue: 337; } 
+[data-subject="design-tech"] {--hue: 31; }
+
+/* Creative Arts */
+[data-subject="music"] {--hue: 196;} 
+[data-subject="visual-arts"] { --hue: 320; }
+[data-subject="vis-design"]  { --hue: 165; }
+[data-subject="photography"] { --hue: 180; }
+
+
+[data-subject="taking-charge"] {--hue: 234; --saturation: 24%; --lightness: 50%;} 
+[data-subject*="sgt"] { --hue: 0; --lightness: 88%; --text: black }
+[data-subject="spark"]  { --hue: 219; }
+
+
+/* Languages */
+[data-subject="french"], 
+[data-subject="german"], 
+[data-subject="italian"], 
+[data-subject="japanese"], 
+[data-subject="spanish"] { --hue: 240; } /* Teal/Cyan */
+
+[data-subject="macqlit"], 
+[data-subject="sra"], 
+[data-subject="warp"] { --hue: 197; --saturation: 21% } /* Teal/Cyan */
+
+
+/* --- MISCELLANEOUS (Exceptions) --- */
+[data-subject="lunch"],      
+[data-subject="morning-tea"]  { --hue: 210;  --lightness: 90%; --text: black; }
+[data-subject="unavailable"],
+[data-subject="study-period"]  {   --saturation: 0%; --lightness: 10%; --text: white; }
+
+
+.container{
+     font-size: .8rem;
+}
+/* --- THE SHARED OPTION STYLE --- */
+
+
+.option:hover {
+  filter: brightness(0.9) saturate(1.2);
+}
+
+/* Version Modifiers (Applied to both Trigger and Options) */
+[data-version="group-lesson"] { 
+    --lightness: 35%; 
+    
+    --text: white; 
+    font-weight: bold; 
+}
+[data-version="individual-lesson"] { 
+    --lightness: 75%; 
+    --text: #1a1a1a; 
+    /* --saturation: 90%; */
+    font-weight: bold; 
+}
+[data-version="independent"] { 
+    --lightness: 75%; 
+    --text: #1a1a1a; 
+    font-weight: normal; 
+}
+
+/* Miscellaneous / Default Styles */
+[data-version="standard"] { --lightness: 90%; --text: black; }
+[data-placeholder="true"] { background: white !important; color: #666 !important; }
+
+/* --- COMPONENT LAYOUT --- */
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.trigger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 10px; */
+    
+    border: .3px solid #ccc;
+        height: 40px;
+        width: 180px;
+    /* border-radius: 4px; */
+    cursor: pointer;
+    background-color: hsl(var(--hue, 0), var(--saturation, 70%), var(--lightness, 100%));
+    color: var(--text, #333);
+}
+
+/* Fix: Background must be white for placeholder */
+.trigger[data-placeholder="true"] {
+    background-color: white;
+    color: #666;
+}
+
+.trigger span {
+     text-align: center;
+}
+
+
+.optionsWrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+width:max-content;
+    z-index: 9999;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex; /* Ensures search and list stack correctly */
+    flex-direction: column;
+}
+
+.searchInput {
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box; /* Crucial for width: 100% */
+    width: 100%;
+}
+
+.optionsList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-height: 300px;
+    text-align: center;
+    overflow-y: auto; /* This allows scrolling within the fixed height */
+    background: white;
+    
+}
+
+
+
+.option:hover {
+    filter: brightness(0.9);
+}
+
+.noResults {
+    padding: 20px;
+    text-align: center;
+    color: #999;
+}
+
+/* --- ANIMATIONS --- */
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.optionsWrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    margin-top: 8px;
+    
+    /* Apply the animation */
+    animation: slideDown 0.2s ease-out forwards;
+    
+    /* Ensures the animation starts from the top */
+    transform-origin: top center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Add a subtle hover effect to the arrow */
+.trigger:hover .arrow {
+    transform: translateY(2px);
+    transition: transform 0.2s ease;
+}
+
+/* Add a slight stagger effect to the list items (Optional but looks great) */
+
+.option {
+    padding: 10px;
+     font-size: .8rem;
+    cursor: pointer;
+    background-color: hsl(var(--hue, 0), var(--saturation, 70%), var(--lightness, 100%));
+    color: var(--text, #333);
+     transition: background-color 0.2s ease, filter 0.2s ease;
+}
+
+/* .option {
+   
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: hsl(var(--hue, 0), var(--saturation, 60%), var(--lightness, 100%));
+  color: var(--text, black);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  transition: filter 0.2s ease;
+} */

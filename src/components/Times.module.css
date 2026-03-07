@@ -1,0 +1,31 @@
+.lessonTimes{
+   
+    border-bottom: gray 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lessonTimes:first-child{
+   padding: px 0 10px;
+    border: none;
+    
+    
+}
+
+
+
+.times{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    display: grid;
+    grid-template-rows: 24px 48px repeat(12, 42px);
+    
+}
+
+.timesHeader{
+    background: #8eaadb;
+    margin-top: 7px;
+  
+}
+

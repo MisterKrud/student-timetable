@@ -8,7 +8,7 @@ export const weekdays = [
 
 export const lessonTimes = [
     '9:00',
-    '9:15',
+  
     '9:30',
     '10:00',
     '10:30',

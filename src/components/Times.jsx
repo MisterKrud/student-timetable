@@ -7,7 +7,7 @@ const Times = () =>{
         <div className={styles.timesHeader}>Time</div>
         
         {lessonTimes.map(time => (
-            <div key={time}>{time}</div>
+            <div key={time} className={styles.lessonTimes}>{time}</div>
         ))}
 
     </div>

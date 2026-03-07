@@ -42,7 +42,8 @@ export const miscellaneous = [
     'Lunch',
     'Morning Tea',
     'Study Period',
-    'Unavailable'
+    'Unavailable',
+    ''
 ]
 
 export const allCourses = [...coreSubjects, ...electiveSubjects]

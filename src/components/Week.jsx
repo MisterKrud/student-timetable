@@ -6,7 +6,7 @@ import styles from "./Week.module.css"
 const Week = () => {
     return(
         <div className={styles.weekContainer}>
-            <Times />
+            <Times className ={styles.dayContainer}/>
         {weekdays.map(day => 
         <div className ={styles.dayContainer} key={day}>
             <div className = {styles.weekdayLabel}>{day}</div>
