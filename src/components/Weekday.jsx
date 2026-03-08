@@ -15,7 +15,7 @@ const Weekday = () => {
                 // <Dropdown key={period} value="Morning Tea" />
                 // ) : period === '1:00' ? (
                 //     <div>Lunch</div> ) :
-                <Dropdown key={period} />
+                <div>{period}</div>
                 
             ))
         }

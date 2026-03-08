@@ -1,16 +1,23 @@
 import { lessonTimes } from "../data/scheduleData";
 import styles from './Times.module.css'
 
-const Times = () =>{
+const Times = ({time}) =>{
     return(
-    <div className ={styles.times}>
-        <div className={styles.timesHeader}>Time</div>
+        time === "9:00" ?  (
+<div className ={styles.nine}> 
+      
         
-        {lessonTimes.map(time => (
-            <div key={time} className={styles.lessonTimes}>{time}</div>
-        ))}
+        {time}
 
     </div>
+        ) : (
+        <div className ={styles.times}> 
+      
+        
+        {time}
+
+    </div>
+        )
     )
 }
 

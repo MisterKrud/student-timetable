@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { allCourses, miscellaneous, otherSubjects } from '../data/courseData';
 import styles from './Dropdown.module.css';
 
-const Dropdown = ({value}) => {
+const Dropdown = ({time}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const dropdownRef = useRef(null);
@@ -58,7 +58,9 @@ const Dropdown = ({value}) => {
     }, []);
 
     return (
+        
         <div className={styles.container} ref={dropdownRef} key={dropdownRef}>
+           {time === "9:00" ? <div className={styles.rollCall}>Roll Call</div> :(
             <div 
                 className={styles.trigger}
                 onClick={() => setIsOpen(!isOpen)}
@@ -76,7 +78,7 @@ const Dropdown = ({value}) => {
 >
     {/* ▼ */}
 {/* </span> */}
-            </div> 
+            </div> )}
 
             {isOpen && (
                 <div className={styles.optionsWrapper}>

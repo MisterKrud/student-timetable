@@ -58,9 +58,9 @@
 [data-subject="study-period"]  {   --saturation: 0%; --lightness: 10%; --text: white; }
 
 
-.container{
+/* .container{
      font-size: .8rem;
-}
+} */
 /* --- THE SHARED OPTION STYLE --- */
 
 
@@ -104,12 +104,21 @@
     /* padding: 10px; */
     
     border: .3px solid #ccc;
-        height: 40px;
+        height: 60px;
         width: 180px;
     /* border-radius: 4px; */
     cursor: pointer;
     background-color: hsl(var(--hue, 0), var(--saturation, 70%), var(--lightness, 100%));
     color: var(--text, #333);
+}
+
+.rollCall {
+    composes: trigger;
+    background-color: darkslategray;
+    color: white;
+    font-weight: bold;
+  
+    
 }
 
 /* Fix: Background must be white for placeholder */
