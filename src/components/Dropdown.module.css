@@ -1,42 +1,36 @@
 /* --- COLOR THEME LOGIC --- */
 
-/* Subject Hues */
-/* --- VERSION MODIFIERS --- */
-[data-version="group lesson"]       { --lightness: 50%; --text: white; font-weight: bold; }
-[data-version="individual lesson"]  { --lightness: 75%; --text: #222;  font-weight: bold; }
-[data-version="independent"] { --lightness: 75%; --text: #222;  font-weight: normal; }
-
 /* --- CORE SUBJECTS --- */
-[data-subject="maths"]     { --hue: 0; }    /* Red */
-[data-subject="english"]   { --hue: 205; }  /* Blue */
-[data-subject="science"]   { --hue: 120; --text: #222; }  /* Green */
-[data-subject="geography"] { --hue: 274; }  /* Olive/Earth */
-[data-subject="history"]   { --hue: 274; }   /* Orange/Brown */
-[data-subject="pdhpe"]     { --hue: 24; }  /* Pink/Red */
+[data-subject="maths"]     { --col: hsl(0, 100%, 49%); --text: white;}    /* Red */
+[data-subject="english"]   { --col: hsl(204, 100%, 38%); --text: white;}  /* Blue */
+[data-subject="science"]   { --col: hsl(124, 100%, 26%); --text: white; }  /* Green */
+[data-subject="geography"], 
+[data-subject="history"]   { --col: hsl(274, 54%, 41%); }   /* Orange/Brown */
+[data-subject="pdhpe"]     { --col: hsl(24, 100%, 50%); }  /* Pink/Red */
 
 
-[data-subject = "child-studies"] {--hue: 210; --saturation: 100%; --text: black;}
-[data-subject = "commerce"] {--hue: 240;}
-[data-subject = "elec-history"] {--hue: 319;}
-[data-subject = "food-tech"] {--hue: 100; --saturation: 100%;}
+[data-subject = "child-studies"] {--col: hsl(209, 94%, 75%) ;}
+[data-subject = "commerce"] {--col: hsl(240, 100%, 40%);}
+[data-subject = "elec-history"] {--col: hsl(318, 98%, 42%);}
+[data-subject = "food-tech"] {--col: hsl(119, 100%, 41%);}
 /* --- ELECTIVES (Grouped by Type) --- */
 /* Tech & Trade */
-[data-subject="agriculture"] {--hue: 89; --text: #222; }
-[data-subject="textiles"] {--hue: 336; }
-[data-subject="timber"] {--hue: 60; } 
-[data-subject="computing-tech"] { --hue: 337; } 
-[data-subject="design-tech"] {--hue: 31; }
+[data-subject="agriculture"] {--col: hsl(89, 59%, 56%); }
+[data-subject="textiles"] {--col: hsl(335, 100%, 50%); }
+[data-subject="timber"] {--col: hsl(60, 100%, 51%); --text: black !important; } 
+[data-subject="computing-tech"] { --col: hsl(336, 35%, 41%) ; } 
+[data-subject="design-tech"] {--col: hsl(172, 95%, 41%); }
 
 /* Creative Arts */
-[data-subject="music"] {--hue: 196;} 
-[data-subject="visual-arts"] { --hue: 320; }
-[data-subject="vis-design"]  { --hue: 165; }
-[data-subject="photography"] { --hue: 180; }
+[data-subject="music"] {--col: hsl(196, 100%, 47%);} 
+[data-subject="visual-arts"] { --col:hsl(319, 100%, 70%); }
+[data-subject="vis-design"]  { --col: hsl(165, 93%, 41%); }
+[data-subject="photography"] { --col: hsl(180, 100%, 50%); --text: black !important; }
 
 
-[data-subject="taking-charge"] {--hue: 234; --saturation: 24%; --lightness: 50%;} 
-[data-subject*="sgt"] { --hue: 0; --lightness: 88%; --text: black }
-[data-subject="spark"]  { --hue: 219; }
+[data-subject="taking-charge"] {--col: hsl(241, 20%, 49%); --text: white; font-weight: bold;} 
+[data-subject*="sgt"] { --col:hsl(0, 68%, 88%); --text: black; font-weight: bold; }
+[data-subject="spark"]  { --col: hsl(219, 79%, 66%); --text: white; font-weight: bold;}
 
 
 /* Languages */
@@ -44,51 +38,40 @@
 [data-subject="german"], 
 [data-subject="italian"], 
 [data-subject="japanese"], 
-[data-subject="spanish"] { --hue: 240; } /* Teal/Cyan */
+[data-subject="spanish"] { --col: hsl(242, 100%, 80%); } /* Teal/Cyan */
 
 [data-subject="macqlit"], 
 [data-subject="sra"], 
-[data-subject="warp"] { --hue: 197; --saturation: 21% } /* Teal/Cyan */
+[data-subject="warp"] { --col: hsl(195, 20%, 70%); --text: white; font-weight: bold;} /* Teal/Cyan */
 
 
 /* --- MISCELLANEOUS (Exceptions) --- */
 [data-subject="lunch"],      
-[data-subject="morning-tea"]  { --hue: 210;  --lightness: 90%; --text: black; }
+[data-subject="morning-tea"]  { --col: hsl(210, 57%, 92%); --text: black; }
 [data-subject="unavailable"],
-[data-subject="study-period"]  {   --saturation: 0%; --lightness: 10%; --text: white; }
+[data-subject="study-period"]  {   --col: hsl(0, 0%, 95%); }
 
 
-/* .container{
-     font-size: .8rem;
-} */
-/* --- THE SHARED OPTION STYLE --- */
 
 
-.option:hover {
-  filter: brightness(0.9) saturate(1.2);
-}
+
 
 /* Version Modifiers (Applied to both Trigger and Options) */
-[data-version="group-lesson"] { 
-    --lightness: 35%; 
-    
-    --text: white; 
-    font-weight: bold; 
-}
-[data-version="individual-lesson"] { 
+
+/* [data-version="individual"] { 
     --lightness: 75%; 
     --text: #1a1a1a; 
-    /* --saturation: 90%; */
+
     font-weight: bold; 
 }
 [data-version="independent"] { 
     --lightness: 75%; 
     --text: #1a1a1a; 
     font-weight: normal; 
-}
+} */
 
 /* Miscellaneous / Default Styles */
-[data-version="standard"] { --lightness: 90%; --text: black; }
+/* [data-version="standard"] { --lightness: 90%; --text: black; } */
 [data-placeholder="true"] { background: white !important; color: #666 !important; }
 
 /* --- COMPONENT LAYOUT --- */
@@ -97,26 +80,62 @@
     width: 100%;
 }
 
+/* .trigger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  height: 100%; 
+  min-height: 2rem;
+  cursor: pointer;
+  border: 0.05rem solid #ccc;
+  background-color: hsl(var(--hue, 0), var(--saturation, 70%), var(--lightness, 100%));
+  color: var(--text, #333);
+} */
+
 .trigger {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* padding: 10px; */
-    
-    border: .3px solid #ccc;
-        height: 60px;
-        width: 180px;
-    /* border-radius: 4px; */
-    cursor: pointer;
-    background-color: hsl(var(--hue, 0), var(--saturation, 70%), var(--lightness, 100%));
-    color: var(--text, #333);
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  height: 100%; 
+  min-height: 3rem;
+  cursor: pointer;
+  color: var(--text);
+  border: 0.05rem solid #ccc;
+  background: color-mix(
+    in oklab,
+    var(--col) var(--mix, 100%),
+    white
+  );
 }
+
+[data-version="group"] {
+  --text: white;
+}
+
+[data-version="group"],
+[data-version="individual"] {
+  
+  font-weight: bold;
+
+}
+
+[data-version="independent"],
+[data-version="individual"] {
+  --mix: 80%;
+  --text: black;
+
+}
+
+
 
 .rollCall {
     composes: trigger;
     background-color: darkslategray;
     color: white;
-    font-weight: bold;
+    min-height: 2rem;
+
   
     
 }
@@ -224,17 +243,21 @@ width:max-content;
     padding: 10px;
      font-size: .8rem;
     cursor: pointer;
-    background-color: hsl(var(--hue, 0), var(--saturation, 70%), var(--lightness, 100%));
+     background: color-mix(
+    in oklab,
+    var(--col) var(--mix, 100%),
+    white
+  );
     color: var(--text, #333);
      transition: background-color 0.2s ease, filter 0.2s ease;
 }
 
-/* .option {
-   
-  padding: 10px 15px;
-  cursor: pointer;
-  background-color: hsl(var(--hue, 0), var(--saturation, 60%), var(--lightness, 100%));
-  color: var(--text, black);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  transition: filter 0.2s ease;
-} */
+
+.option:hover {
+  background: color-mix(
+    in oklab,
+    var(--col) var(--mix, 100%),
+    rgb(255, 255, 255)
+  );
+}
+

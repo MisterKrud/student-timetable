@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
-import { allCourses, miscellaneous, otherSubjects } from '../data/courseData';
+import { allCourses, miscellaneous, otherSubjects, dropdownOptions } from '../data/courseData';
 import styles from './Dropdown.module.css';
 
 const Dropdown = ({time}) => {
@@ -8,43 +8,50 @@ const Dropdown = ({time}) => {
     const dropdownRef = useRef(null);
     const [selected, setSelected] = useState({ 
         label: '', 
-        subject: '', 
-        version: '' 
+        code:''
     });
 
+    const getMeta = (code) => {
+  if (!code) return {};
+  const [subject, version] = code.split('_');
+  return { subject, version };
+};
+   const { subject, version } = getMeta(selected.code);
+
+    console.log('dropdownoptions', dropdownOptions)
     // 1. Memoize the full list so it doesn't recalculate on every keystroke
-    const fullList = useMemo(() => {
-        const lessonVersions = ['Group Lesson', 'Individual Lesson', 'Independent'];
+    // const fullList = useMemo(() => {
+    //     const lessonVersions = ['Group Lesson', 'Individual Lesson', 'Independent'];
         
-        const courseOptions = allCourses.flatMap(course => 
-            lessonVersions.map(version => ({
-                label: `${course} ${version}`,
-                subject: course.toLowerCase().replace(/[&]/g, '').replace(/\s+/g, '-').trim(),
-                version: version.toLowerCase()
-            }))
-        );
+    //     const courseOptions = allCourses.flatMap(course => 
+    //         lessonVersions.map(version => ({
+    //             label: `${course} ${version}`,
+    //             subject: course.toLowerCase().replace(/[&]/g, '').replace(/\s+/g, '-').trim(),
+    //             version: version.toLowerCase()
+    //         }))
+    //     );
 
-        const otherSubjectOptions = otherSubjects.map(item=> ({
-            label: item,
-            subject: item.toLowerCase().replace(/\s+/g, '-').trim(),
-            version: 'group lesson'
-        }))
+    //     const otherSubjectOptions = otherSubjects.map(item=> ({
+    //         label: item,
+    //         subject: item.toLowerCase().replace(/\s+/g, '-').trim(),
+    //         version: 'group lesson'
+    //     }))
 
-        const miscOptions = miscellaneous.map(item => ({
-            label: item,
-            subject: item.toLowerCase().replace(/\s+/g, '-').trim(),
-            version: 'standard'
-        }));
+    //     const miscOptions = miscellaneous.map(item => ({
+    //         label: item,
+    //         subject: item.toLowerCase().replace(/\s+/g, '-').trim(),
+    //         version: 'standard'
+    //     }));
 
-        return [...courseOptions, ...otherSubjectOptions, ...miscOptions];
-    }, []);
+    //     return [...courseOptions, ...otherSubjectOptions, ...miscOptions];
+    // }, []);
 
     // 2. Filter the list based on search input
-    const filteredList = fullList.filter(item => 
+    const filteredList = dropdownOptions.filter(item => 
         item.label.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    console.log(filteredList)
+    
     // 3. Close dropdown when clicking outside
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -59,14 +66,14 @@ const Dropdown = ({time}) => {
 
     return (
         
-        <div className={styles.container} ref={dropdownRef} key={dropdownRef}>
+        <div className={styles.container} ref={dropdownRef}>
            {time === "9:00" ? <div className={styles.rollCall}>Roll Call</div> :(
             <div 
                 className={styles.trigger}
                 onClick={() => setIsOpen(!isOpen)}
-                data-subject={selected.subject}
-                data-version={selected.version}
-                data-placeholder={selected.subject === ''}
+                data-subject={subject}
+                data-version={version}
+                data-placeholder={!selected.code}
             >
                 <span>{selected.label}</span>
                 {/* <span 
@@ -96,8 +103,8 @@ const Dropdown = ({time}) => {
                                 <li 
                                     key={item.label}
                                     className={styles.option}
-                                    data-subject={item.subject}
-                                    data-version={item.version}
+                                    data-subject={item.code.split('_')[0]}
+                                    data-version={item.code.split('_')[1]}
                                     onClick={() => {
                                         setSelected(item);
                                         setIsOpen(false);

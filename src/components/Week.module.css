@@ -1,16 +1,16 @@
-.weekContainer{
-    display: grid;
-    justify-content: center;
-    align-items: center;
-     grid-template-columns:
-    80px          /* time column */
-    repeat(5, 1fr);
-
-  grid-template-rows: 30px 30px repeat(11, 60px);
-
-  border: 1px solid #ccc;
-   
+.weekContainer {
+     box-sizing: border-box;
+    padding: 0 .2rem;
+  display: grid;
+  justify-content: center;
+  align-items: start; /* important for dropdowns */
+  grid-template-columns: 5rem repeat(5, 1fr); /* time column + 5 weekdays */
+  grid-template-rows:  2rem 2rem repeat(10, 3rem); /* header row + 11 lesson slots */
+  gap: 0.2rem; /* small spacing between cells */
+  border: 0.1rem solid #ccc;
+  font-size: 1rem; /* base for rem units */
 }
+
 
 
 
@@ -18,13 +18,11 @@
     font-weight: bold;
     background-color: gray;
     color: white;
-    border: white 1px solid;
+    margin: 1px -1px 0 1px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
-.weekdayLabel{
-    background: #8eaadb;
-}
